@@ -17,8 +17,21 @@ def get_registerd_data():
 def json_serializer(data):
     return json.dumps(data).encode("utf-8")
 
-
-p = Producer({'bootstrap.servers':'localhost:29092'})
+def push_producer():
+   
+    data = get_registerd_data()
+	#str = json_serializer(data)
+    str = json.dumps(data).encode("utf-8")
+    #text = "안녕"  # text는 str이 됩니다.
+    #text_byte = text.encode('utf-8')
+    #text_str = text_byte.decode('utf-8')
+    text_str = str.decode('utf-8')
+    print(text_str)
+    p.poll(0)
+    p.produce('registered_user', text_str)
+    #time.sleep(3)
+p = Producer({'bootstrap.servers':'imcmaster.iptime.org:29092'})
+# p = Producer({'bootstrap.servers':'localhost:29092'})
 
 if __name__ == "__main__":
     while True:
