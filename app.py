@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 data=[];
 @app.route('/')
+@crossdomain(origin='*')
 def index():
     print(data)
     return render_template('index.html',headings=("Name","Address","Created At"), data=data)
