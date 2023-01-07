@@ -19,8 +19,9 @@ def consumer_once():
     else:
         data=msg.value().decode('utf-8')
         print(data)
+        c.close()
         return data
-    c.close()
+    
 
 def consumer_looping():
     c.subscribe(['registered_user'])
