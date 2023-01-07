@@ -2,16 +2,19 @@ from flask import Flask, render_template
 # from Django.shortcuts import render
 from producer import *
 from consumer import *
+import json
+
 
 app = Flask(__name__)
 
 data=[]
 consumedata=[]
+strdata=""
 
 @app.route('/')
 def index():
     print(data)
-    return render_template('index.html',headings=("Name","Address","Created At"), data=data, consumedata=consumedata)
+    return render_template('index.html',headings=("Name","Address","Created At"), data=data, consumedata=strdata)
 
 
 #background process happening without any refreshing
@@ -24,7 +27,9 @@ def background_process_test():
 def consumer():
     consumedt=consumer_once()
     consumedata.append(consumedt)
-    print(consumedata)
+    str = json.dumps(consumedata).encode("utf-8")
+    strdata = str.decode('utf-8')
+    print(strdata)
     # return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
     return ("nothing")
  
