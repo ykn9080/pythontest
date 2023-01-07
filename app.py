@@ -11,7 +11,7 @@ consumedata=[]
 @app.route('/')
 def index():
     print(data)
-    return render_template('index.html',headings=("Name","Address","Created At"), data=data)
+    return render_template('index.html',headings=("Name","Address","Created At"), data=data, consumedata=consumedata)
 
 
 #background process happening without any refreshing
@@ -21,12 +21,12 @@ def background_process_test():
     return ("nothing")
 
 @app.route('/consumer')
-def consumer_loop():
-    consumedt=consumer_looping()
+def consumer():
+    consumedt=consumer_once()
     consumedata.append(consumedt)
     print(consumedata)
-    return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
-    
+    # return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
+    return ("nothing")
  
 
 @app.route('/producer')
