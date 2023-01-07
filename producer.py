@@ -26,7 +26,7 @@ def push_producer(data):
     #text_byte = text.encode('utf-8')
     #text_str = text_byte.decode('utf-8')
     text_str = str.decode('utf-8')
-    print(text_str)
+    # print(text_str)
     p.poll(0)
     p.produce('registered_user', text_str)
     #time.sleep(3)
