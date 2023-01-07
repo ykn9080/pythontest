@@ -9,10 +9,6 @@ print('Kafka Consumer has been initiated...')
 print('Available topics to consume: ', c.list_topics().topics)
 
 
-@app.route('/consumer')
-def index():
-    return render_template('consume.html',headings=("Name","Address","Created At"), data=data)
-
 
 def consumer_once():
     c.subscribe(['registered_user'])
