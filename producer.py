@@ -30,8 +30,8 @@ def push_producer():
     p.poll(0)
     p.produce('registered_user', text_str)
     #time.sleep(3)
-p = Producer({'bootstrap.servers':'imcmaster.iptime.org:29092'})
-# p = Producer({'bootstrap.servers':'localhost:29092'})
+#p = Producer({'bootstrap.servers':'imcmaster.iptime.org:29092'})
+p = Producer({'bootstrap.servers':'localhost:29003'})
 
 if __name__ == "__main__":
     while True:
