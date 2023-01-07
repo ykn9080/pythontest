@@ -31,7 +31,7 @@ def consumer():
     strdata = str.decode('utf-8')
     print("helloooooooooooooo",strdata)
     # return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
-    return ("nothing")
+    return strdata
  
 
 @app.route('/producer')
