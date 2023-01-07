@@ -5,23 +5,28 @@ from consumer import *
 
 app = Flask(__name__)
 
-data=[];
+data=[]
+consumedata=[]
+
 @app.route('/')
 def index():
     print(data)
     return render_template('index.html',headings=("Name","Address","Created At"), data=data)
 
 
-#rendering the HTML page which has the button
-@app.route('/json')
-def json():
-    return render_template('json.html')
-
 #background process happening without any refreshing
 @app.route('/background_process_test')
 def background_process_test():
     print ("Hello")
     return ("nothing")
+
+@app.route('/consumer')
+def consumer_loop():
+    consumedt=consumer_looping()
+    consumedata.append(consumedt)
+    return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
+    
+ 
 
 @app.route('/producer')
 def producer_loop():
