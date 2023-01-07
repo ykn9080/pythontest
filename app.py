@@ -1,13 +1,15 @@
 from flask import Flask, render_template
 # from Django.shortcuts import render
 from producer import *
+from consumer import *
 
 app = Flask(__name__)
 
-
+data=[];
 @app.route('/')
 def index():
-    return render_template('index.html')
+    print(data)
+    return render_template('index.html',headings=("Name","Address","Created At"), data=data)
 
 
 #rendering the HTML page which has the button
@@ -23,9 +25,12 @@ def background_process_test():
 
 @app.route('/producer')
 def producer_loop():
-    print (get_registerd_data())
-    push_producer()
-    return ("nothing")
+    newdata=get_registerd_data()
+    data.append(newdata)
+    print (newdata,data)
+    
+    push_producer(newdata)
+    return (data)
 
 
 if __name__ == "__main__":

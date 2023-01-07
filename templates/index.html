@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    good
-{% endblock %}
+
 {% block css %}
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 {% endblock %}
@@ -14,26 +12,44 @@
             e.preventDefault()
             $.getJSON('/producer',
                 function(data) {
-              //do nothing
+                    console.log(data);
             });
+            window.location.reload()
             return false;
           });
         });
 </script>
 {% endblock %}
 {% block content %}
-    <h1>hello</h1>
-    <p><div>test</div></p>
-    <button type="button" class="btn btn-primary">Primary</button>
+  
     <div class='container'>
-    <h3>Test</h3>
+       <nav class="navbar bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+        </nav>
+    <h3>Produce Topic</h3>
         <form>
-            <a href=# id=test><button class='btn btn-default'>Test</button></a>
+            <a href=# id=test><button class='btn btn-default'>Produce</button></a>
         </form>
+        <table class="table table-striped table-hover">
+            <tr>
+                {% for header in headings %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ row[cell] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    <h3>Kafka Manager</h3>
+    <iframe src="http://imcmaster.iptime.org:9000/clusters/nam-cluster/topics/registered_user" width="100%" height="500px" frameborder=0 sandbox></iframe>
 
-</div>
+    </div>
 {% endblock %}
 
-{% block footer %}
-    <p>Footer</p>
-{% endblock %}
+
