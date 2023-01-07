@@ -1,10 +1,20 @@
 from confluent_kafka import Consumer
+from flask import Flask, render_template
 
+app = Flask(__name__)
 ################
 c=Consumer({'bootstrap.servers':'imcmaster.iptime.org:29093','group.id':'python-consumer','auto.offset.reset':'earliest'})
 print('Kafka Consumer has been initiated...')
 
 print('Available topics to consume: ', c.list_topics().topics)
+
+data=[]
+
+@app.route('/consumer')
+def index():
+    print(data)
+    return render_template('consume.html',headings=("Name","Address","Created At"), data=data)
+
 
 def consume_once():
     c.subscribe(['registered_user'])
