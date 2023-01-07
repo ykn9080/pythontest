@@ -25,7 +25,7 @@ def background_process_test():
 
 @app.route('/consumer')
 def consumer():
-    consumedt=consumer_once()
+    consumedt=consumer_looping()
     consumedata.append(consumedt)
     str = json.dumps(consumedata).encode("utf-8")
     strdata = str.decode('utf-8')

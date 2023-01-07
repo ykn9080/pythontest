@@ -14,6 +14,12 @@
                 function(data) {
                     console.log(data);
             });
+            
+            window.location.reload()
+            return false;
+          });
+           $('a#test1').on('click', function(e) {
+            e.preventDefault()
             $.getJSON('/consumer',
                 function(data) {
                     console.log(data);
@@ -53,6 +59,9 @@
         </table>
      <h3>Consume Topic </h3>
     <p> kafka topic: registered_user 에서 전송한 메시지입니다. </p>
+     <form>
+        <a href=# id=test1><button class='btn btn-default'>Consume</button></a>
+    </form>
     {{ consumedata }}
    
    

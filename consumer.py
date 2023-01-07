@@ -34,7 +34,7 @@ def consumer_looping():
         data=msg.value().decode('utf-8')
         print(data)
         return data
-    # c.close()
+    c.close()
     
 
 if __name__ == "__main__":
