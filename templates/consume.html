@@ -25,20 +25,7 @@
     <div>
     <h3>Consume Topic </h3>
     <p> kafka topic: registered_user 에서 전송한 메시지입니다. </p>
-    <table class="table table-striped table-hover">
-        <tr>
-            {% for header in headings %}
-            <th>{{ header }}</th>
-            {% endfor %}
-        </tr>
-        {% for row in data %}
-        <tr>
-            {% for cell in row %}
-            <td>{{ row[cell] }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+     {{ consumedata }}
     </div>
 {% endblock %}
 
