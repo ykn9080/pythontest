@@ -24,6 +24,7 @@ def background_process_test():
 def consumer_loop():
     consumedt=consumer_looping()
     consumedata.append(consumedt)
+    print(consumedata)
     return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
     
  
