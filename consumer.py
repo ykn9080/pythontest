@@ -8,15 +8,13 @@ print('Kafka Consumer has been initiated...')
 
 print('Available topics to consume: ', c.list_topics().topics)
 
-data=[]
 
 @app.route('/consumer')
 def index():
-    print(data)
     return render_template('consume.html',headings=("Name","Address","Created At"), data=data)
 
 
-def consume_once():
+def consumer_once():
     c.subscribe(['registered_user'])
     msg=c.poll(1.0) #timeout
     if msg is None:
@@ -25,9 +23,10 @@ def consume_once():
     else:
         data=msg.value().decode('utf-8')
         print(data)
+        return data
     c.close()
 
-def consume_loop():
+def consumer_looping():
     c.subscribe(['registered_user'])
     while True:
         msg=c.poll(1.0) #timeout
@@ -38,7 +37,9 @@ def consume_loop():
             continue
         data=msg.value().decode('utf-8')
         print(data)
-    c.close()
+        return data
+    # c.close()
+    
 
 if __name__ == "__main__":
     consume_loop()()
