@@ -26,8 +26,7 @@ def background_process_test():
 @app.route('/consumer')
 def consumer():
     consumedt=consumer_looping()
-    consumedata.append(consumedt)
-    str = json.dumps(consumedata).encode("utf-8")
+    str = json.dumps(consumedt).encode("utf-8")
     strdata = str.decode('utf-8')
     print("helloooooooooooooo",strdata)
     return render_template('consume.html',headings=("Name","Address","Created At"), consumedata=strdata)
