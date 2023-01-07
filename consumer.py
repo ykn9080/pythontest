@@ -8,18 +8,17 @@ print('Kafka Consumer has been initiated...')
 
 print('Available topics to consume: ', c.list_topics().topics)
 
-
+c.subscribe(['registered_user'])
 
 def consumer_once():
-    c.subscribe(['registered_user'])
+    
     msg=c.poll(1.0) #timeout
     if msg is None:
         print('No message received')
         return
     else:
         data=msg.value().decode('utf-8')
-        print(data)
-        c.close()
+        print("mssssss",data)
         return data
     
 
