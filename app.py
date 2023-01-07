@@ -8,8 +8,8 @@ import json
 app = Flask(__name__)
 
 data=[]
-consumedata=[]
-strdata=""
+
+strdata="hello"
 
 @app.route('/')
 def index():
@@ -30,8 +30,8 @@ def consumer():
     str = json.dumps(consumedata).encode("utf-8")
     strdata = str.decode('utf-8')
     print("helloooooooooooooo",strdata)
-    # return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
-    return strdata
+    return render_template('consume.html',headings=("Name","Address","Created At"), consumedata=strdata)
+    # return strdata
  
 
 @app.route('/producer')
