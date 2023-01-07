@@ -13,7 +13,7 @@ strdata=""
 
 @app.route('/')
 def index():
-    print(data)
+    
     return render_template('index.html',headings=("Name","Address","Created At"), data=data, consumedata=strdata)
 
 
@@ -29,7 +29,7 @@ def consumer():
     consumedata.append(consumedt)
     str = json.dumps(consumedata).encode("utf-8")
     strdata = str.decode('utf-8')
-    print(strdata)
+    print("helloooooooooooooo",strdata)
     # return render_template('consume.html',headings=("Name","Address","Created At"), data=consumedata)
     return ("nothing")
  
